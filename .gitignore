@@ -1,1 +1,3 @@
 node_modules
+SECRET.ENV
+SECRETS.env
