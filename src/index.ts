@@ -3,6 +3,8 @@ import { fetchUserData } from "./gitStats";
 import { generateImage } from "./imageGen";
 
 const app = express();
+app.use(require('sanitize').middleware);
+
 const port = process.env.PORT || 3000;
 
 
