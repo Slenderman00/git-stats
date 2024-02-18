@@ -3,7 +3,7 @@ import { fetchUserData } from "./gitStats";
 import { generateImage } from "./imageGen";
 
 const app = express();
-const port = 80;
+const port = process.env.PORT || 3000;
 
 
 app.get('/username/:name', (req: any, res: any) => {
