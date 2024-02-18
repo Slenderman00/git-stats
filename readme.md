@@ -1,1 +1,4 @@
-Automatically generate nice github status images: ![](https://github-stats-slenderman00-b617028cc4d5.herokuapp.com/username/Slenderman00?)
+Automatically generate nice github status images: 
+![](https://stats.joar.me/username/slenderman00)
+---
+Images are generated using this simple url `stats.joar.me/username/slenderman00`
