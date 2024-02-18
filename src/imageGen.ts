@@ -17,11 +17,11 @@ function compareStars(a: any, b: any) {
     return b.stargazerCount - a.stargazerCount;
 }
 
-function generateGraph(ctx: any, data: any, width: number, height: number) {
+function generateGraph(ctx: any, data: any, width: number, height: number, lineWidth: number) {
     const length = data.length
     const steps = width / length;
 
-    ctx.lineWidth = 2;
+    ctx.lineWidth = lineWidth;
     ctx.beginPath();
 
     data.forEach((day: any, index: number) => {
@@ -82,7 +82,11 @@ export function generateImage(data: object) {
     let canvas = createCanvas(512, 200);
     let ctx = canvas.getContext("2d");
 
-    generateGraph(ctx, contributionsProcessed, 512, 200)
+    generateGraph(ctx, contributionsProcessed, 512, 200, 8)
+    ctx.strokeStyle = "#ffffff"
+    generateGraph(ctx, contributionsProcessed, 512, 200, 0.8)
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 2;
 
     topFiveProjects.forEach((project: any, index: number) => {
         generateTag(ctx, 20, 20 + (25 * index), `${project.name} | ${project.stargazerCount} stars`);
