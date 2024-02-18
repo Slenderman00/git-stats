@@ -3,7 +3,7 @@ import { fetchUserData } from "./gitStats";
 import { generateImage } from "./imageGen";
 
 const app = express();
-const port = 8080;
+const port = 80;
 
 
 app.get('/username/:name', (req: any, res: any) => {
@@ -15,5 +15,5 @@ app.get('/username/:name', (req: any, res: any) => {
 })
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running on port: ${port}`);
   });
