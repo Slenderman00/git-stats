@@ -13,40 +13,44 @@ export async function fetchUserData(username: string, callback: (userData: objec
     let lastYearMS = Date.now() - 31556952000;
     const lastYear = new Date(lastYearMS).toISOString();
 
-    console.log(now)
-
-    let data: object = await graphqlWithAuth({
-        "query": `query {
-            user(login: "${username}") {
-              repositories(last: 100) {
-                totalCount
-                nodes {
-                   name
-                   stargazerCount
-                   visibility
-                }
-              }
-              createdAt
-              contributionsCollection(
-                from: "${lastYear}"
-                to: "${now}"
-              ) {
-                contributionCalendar {
-                  totalContributions
-                  weeks {
-                    contributionDays {
-                      weekday
-                      date
-                      contributionCount
-                      color
+    try {
+        let data: object = await graphqlWithAuth({
+            "query": `query {
+                user(login: "${username}") {
+                repositories(last: 100) {
+                    totalCount
+                    nodes {
+                    name
+                    stargazerCount
+                    visibility
                     }
-                    firstDay
-                  }
                 }
-              }
-            }
-          }`
-    })
+                createdAt
+                contributionsCollection(
+                    from: "${lastYear}"
+                    to: "${now}"
+                ) {
+                    contributionCalendar {
+                    totalContributions
+                    weeks {
+                        contributionDays {
+                        weekday
+                        date
+                        contributionCount
+                        color
+                        }
+                        firstDay
+                    }
+                    }
+                }
+                }
+            }`
+        })
 
-    callback(data)
+        callback(data)
+    } catch(err) {
+        console.error(err)
+        return;
+    }
+
 }
