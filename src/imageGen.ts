@@ -1,5 +1,4 @@
 import { createCanvas } from "canvas";
-import fs from "fs";
 
 function roundRect(ctx: any, x: number, y: number, width: number, height: number, radius: number) {
     ctx.beginPath();
