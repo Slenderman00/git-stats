@@ -25,7 +25,7 @@ function compareStars(a: any, b: any) {
 }
 
 function comparePercentage(a: any, b: any) {
-    return b.percentage - a.percentage;
+  return b.percentage - a.percentage;
 }
 
 function generateGraph(
@@ -126,8 +126,8 @@ export function generateImage(data: object) {
 
   let languagePercentage: any = [];
   Object.keys(languages.languages).forEach((key: string) => {
-    if(key == 'Shell') {
-        return;
+    if (key == "Shell") {
+      return;
     }
 
     languagePercentage.push({
@@ -138,13 +138,15 @@ export function generateImage(data: object) {
     });
   });
 
-  const topTenLanguages = languagePercentage.sort(comparePercentage).slice(0, 5);
-  topTenLanguages.forEach((language: any, index: number) => {
+  const topFiveLanguages = languagePercentage
+    .sort(comparePercentage)
+    .slice(0, 5);
+  topFiveLanguages.forEach((language: any, index: number) => {
     generateTag(
-        ctx,
-        260,
-        20 + 25 * index,
-        `${language.name} | ${language.percentage} %`
+      ctx,
+      260,
+      20 + 25 * index,
+      `${language.name} | ${language.percentage} %`
     );
   });
 
